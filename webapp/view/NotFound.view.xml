@@ -1,0 +1,7 @@
+<mvc:View controllerName="student00.com.sap.training.ux402.fullscreen.ux402fullscreen.controller.NotFound"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content />
+    </Page>
+</mvc:View>
