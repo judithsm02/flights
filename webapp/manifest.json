@@ -1,5 +1,5 @@
 {
-  "_version": "1.59.0",
+  "_version": "1.42.0",
   "sap.app": {
     "id": "student00.com.sap.training.ux402.fullscreen.ux402fullscreen",
     "type": "application",
@@ -12,8 +12,8 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
-      "version": "1.12.5",
-      "toolsId": "3efd4c01-230a-415a-94c4-e846e415838d"
+      "version": "1.8.0",
+      "toolsId": "850cf2d4-23aa-4470-9c8c-6abd331e2371"
     },
     "dataSources": {
       "mainService": {
@@ -46,7 +46,7 @@
   "sap.ui5": {
     "flexEnabled": false,
     "dependencies": {
-      "minUI5Version": "1.121.2",
+      "minUI5Version": "1.102.1",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -90,24 +90,53 @@
         "viewPath": "student00.com.sap.training.ux402.fullscreen.ux402fullscreen.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "clearControlAggregation": false
+        "clearControlAggregation": false,
+        "transition": "slide",
+        "bypassed": {
+          "target": [
+            "notFound"
+          ]
+        }
       },
       "routes": [
         {
-          "name": "RouteCarrier",
-          "pattern": ":?query:",
+          "name": "overview",
+          "pattern": "",
+          "titleTarget": "",
+          "greedy": false,
           "target": [
-            "TargetCarrier"
+            "overview"
+          ]
+        },
+        {
+          "name": "flights",
+          "pattern": "carriers/{carrid}",
+          "titleTarget": "",
+          "greedy": false,
+          "target": [
+            "flights"
           ]
         }
       ],
       "targets": {
-        "TargetCarrier": {
+        "overview": {
           "viewType": "XML",
           "transition": "slide",
-          "clearControlAggregation": false,
           "viewId": "Carrier",
-          "viewName": "Carrier"
+          "viewName": "Carrier",
+          "viewLevel": 1
+        },
+        "flights": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Flights",
+          "viewName": "Flights",
+          "viewLevel": 2
+        },
+        "notFound": {
+          "viewId": "NotFound",
+          "viewName": "NotFound",
+          "transition": "show"
         }
       }
     },
