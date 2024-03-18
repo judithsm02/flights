@@ -1,10 +1,12 @@
 sap.ui.define([
-  "sap/ui/core/mvc/Controller"
+  "sap/ui/core/mvc/Controller",
+  "student00/com/sap/training/ux402/fullscreen/ux402fullscreen/control/HoverButton",
+  "sap/m/MessageToast"
 ],
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
    */
-  function (Controller) {
+  function (Controller,HoverButton, MessageToast) {
       "use strict";
 
       return Controller.extend("student00.com.sap.training.ux402.fullscreen.ux402fullscreen.controller.Flights", {
@@ -57,8 +59,21 @@ sap.ui.define([
               } else {
                   this.getRouter().navTo("overview", true /*no history*/);
               }
-
+          },
+          onHover: function(evt)  //evt es un evento que es va desencadenar en aquesta funció 
+          {
+            var sText = this.getOwnerComponent().getModel("i18n").getProperty("msgSeatsAv"); //s'obte un text des del i18 que s'emmagatzema en stext
+            MessageToast.show(evt.getSource().getHoverText() + " " + sText, {duration: 1000});  // Se muestra un mensaje emergente (toast) que combina dos partes:
+            // 1. El texto definido en la propiedad "hoverText" del control que disparó el evento "hover"
+            // 2. El texto relacionado con la disponibilidad de asientos que s'emmagatzemava en stext
+            //aixo dura 1000 milisegos o 1 segon
           }
+
+
+
+
+
+
 
 
       });
